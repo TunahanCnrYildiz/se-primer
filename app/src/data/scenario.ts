@@ -244,7 +244,7 @@ export const scenarioData: ScenarioData = {
       options: {
         A: {
           title: "Hasta adını maskele",
-          sub: "patient=\"A***\" olarak paylaş",
+          sub: "ERROR appt_id=4821 patient=\"A***\" slot=09:30",
           minutes: 0,
           what: "Logdaki hasta adını maskeledin ve ekiple paylaştın.",
           why: "Hatayı ayıklamak için hasta adına gerek yoktur, kayıt numarası yeterlidir. Kişisel veriyi maskelemek KVKK'nın ölçülülük ilkesine ve 12. maddedeki veri güvenliği yükümlülüğüne uygundur.",

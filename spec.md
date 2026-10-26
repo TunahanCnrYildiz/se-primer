@@ -1,6 +1,6 @@
 # SE Primer — Spesifikasyon
 
-> Sürüm: 0.9 · Tarih: 26 Ekim 2026 · Arkadaş testi sonrası 1.0 olacak (bkz. §9)
+> Sürüm: 1.0 · Tarih: 26 Ekim 2026 · Arkadaş testi işlendi (bkz. §9)
 >
 > İlgili belgeler: [DESIGN.md](DESIGN.md) (tasarım ve durum makinesi) · [KARARLAR.md](KARARLAR.md) (karar kaydı) · [eval/RAPOR.md](eval/RAPOR.md) (tutor değerlendirmesi)
 
@@ -18,12 +18,21 @@ Yazılım mühendisliği öğrencileri geri alma (rollback), test ve kişisel ve
 |---|---|---|---|
 | B1 | Telefonda baştan sona oynanır | Arkadaş testinde oyuncu yardım almadan, 10 dk içinde bir son ekranına ulaşır | Arkadaş testi (§9) |
 | B2 | Karar mantığı doğrudur | 8 yolun hepsi §4'teki saat ve sonla biter | `e2e/cypress/e2e/paths.cy.js`, 8/8 |
-| B3 | Kabul örnekleri sağlanır | KÖ-1 … KÖ-7'nin hepsi geçer | `e2e/cypress/e2e/acceptance.cy.js` |
+| B3 | Kabul örnekleri sağlanır | KÖ-1 … KÖ-8'in hepsi geçer | `e2e/cypress/e2e/acceptance.cy.js` |
 | B4 | Tutor cevabı ele vermez | 20 öğrenci mesajında ele verme oranı ≤ %20 | [eval/RAPOR.md](eval/RAPOR.md) |
 | B5 | Tutor oyunu bekletmez | Yanıt 8 sn içinde gelir, gelmezse sabit ipucu gösterilir | KÖ-7 testi |
 | B6 | Oyuncu "neden"i görür | Her karardan sonra "ne oldu / neden oldu" gösterilir, son ekranda üç kararın gerekçesi özetlenir | KÖ-3 testi |
+| B7 | Oyuncu "neden"i anlar | Oyun bittikten sonra oyuncu en az bir kararın nedenini kendi cümlesiyle açıklayabilir | Arkadaş testi (§9) |
 
-**Son ölçüm (26 Ekim 2026):** B2 ✅ 8/8 · B3 ✅ 27/27 E2E test (8 yol + 13 kabul + 6 kişiselleştirme) · B5 ✅ · B6 ✅ · B1 arkadaş testi bekleniyor · **B4 ❌ %45** (9/20, %95 GA %26–%66). Tutor cevabı hiç doğrudan söylemedi ama tek taraflı sorularla dolaylı yönlendirdi. Bulgular ve iyileştirme önerileri değerlendirme raporunda.
+**Son ölçüm (26 Ekim 2026):**
+- ✅ B1: arkadaş testinde 3 dk, takılmadan (n = 1)
+- ✅ B2: 8/8 yol
+- ✅ B3: 28/28 E2E test (8 yol + 14 kabul + 6 kişiselleştirme)
+- ✅ B5, B6
+- ❌ **B4: %45** (9/20, %95 GA %26–%66). Tutor cevabı hiç doğrudan söylemedi ama tek taraflı sorularla dolaylı yönlendirdi. Ayrıntı değerlendirme raporunda.
+- ❌ **B7:** Arkadaş testindeki oyuncu ideal yolu buldu ama hiçbir kararın nedenini açıklayamadı (n = 1). B6'nın sağlanması B7'yi garanti etmiyor: "neden" ekranda gösteriliyor ama okunup geçilebiliyor. Bkz. §9.
+
+B7, arkadaş testinden sonra eklendi. Spec'in ilk sürümündeki başarı ölçütü ("oyuncu her kararın nedenini kendi cümleleriyle açıklayabilecek durumda") bunu zaten amaçlıyordu, ama B6 yalnızca gösterilmesini ölçüyordu.
 
 ### Hedef kullanıcı
 
@@ -178,6 +187,12 @@ Tutor iki katmandan oluşur:
 - **Ne zaman:** Oyuncu Karar 2 ekranında "İpucu iste"ye dokunur.
 - **O zaman:** En geç 8 sn içinde Karar 2'nin sabit ipuçlarından ilki gösterilir. Ekranda hata mesajı çıkmaz, oyuncu karar verip devam edebilir.
 
+**KÖ-8 · Maskelenmiş log, hata ayıklama için gereken bilgiyi gösterir** *(arkadaş testinden)*
+- **Verilen:** Oyuncu Karar 3 ekranındadır ve logdaki hasta adını görmüştür.
+- **Ne zaman:** "Hasta adını maskele" seçeneğini okur.
+- **O zaman:** Seçeneğin altında maskelenmiş log satırının **tamamı** görünür: `ERROR appt_id=4821 patient="A***" slot=09:30`. Oyuncu, hata ayıklama için gereken kayıt numarası ve saatin korunduğunu karar vermeden önce görür.
+- **Görünmez varsayım:** Spec, oyuncunun maskelemenin hata ayıklamayı bozmadığını bildiğini varsayıyordu. Arkadaş testindeki oyuncu "ekip loga bakacağı için her şeyin olduğu gibi gönderilmesi gerekmiyor mu?" diye duraksadı. Önceki metin (`patient="A***" olarak paylaş`) neyin korunduğunu göstermiyordu.
+
 ## 7. Akış şeması
 
 Oyuncunun ekranlar arasındaki yolu. Durumlar, koşullar ve değişkenlerle birlikte biçimsel model [DESIGN.md'deki durum makinesi](DESIGN.md#9-durum-makinesi).
@@ -256,4 +271,18 @@ Cypress testleri metne değil `data-cy` özniteliklerine bağlıdır. Liste: [DE
 
 - [x] Tutor LLM mi, sabit ipucu mu? → **LLM, sabit ipucu yedeğiyle** (§5). Gerekçe: Değerlendirmenin ölçeceği gerçek bir davranış olmalı, ama uygulama LLM'e bağımlı kalıp takılmamalı.
 - [x] "Yeniden oyna" soruları tekrar sormalı mı? → **Evet, önceki cevaplar seçili gelir** (§3). Gerekçe: Oyuncu kişiselleştirmeyi farklı profille görebilir, ama aynı profille tekrar oynamak tek dokunuş sürer.
-- [ ] **Arkadaş testi:** Uygulamayı daha önce görmemiş biri telefonda, yardım almadan oynar. İlk takıldığı ya da tereddüt ettiği yer, spec'teki görünmez bir varsayımdır. O yer KÖ-8 olarak §6'ya eklenir, B1 ölçütü (§1) işaretlenir ve spec 1.0 olur.
+- [x] **Arkadaş testi:** Uygulamayı daha önce görmemiş biri telefonda, yardım almadan oynadı.
+
+  | | |
+  |---|---|
+  | Profil | Yeni başladım · Backend geliştirici · Test alışkanlığı |
+  | Yol ve son | A → A → A, Son A |
+  | Süre | ~3 dk, takılmadan |
+  | Tutor | Açtı |
+  | En uzun duraksadığı an | Karar 3: "Ekip loga bakacağı için her şeyin olduğu gibi gönderilmesi gerekmiyor mu?" → **KÖ-8** |
+  | Bir kararın nedenini açıklayabildi mi? | **Hayır** → B7 ❌ |
+
+- [ ] **"Neden"i öğrenilir kılmak (B7):** Oyuncu doğru yolu bulunca "neden oldu" metnini okumadan geçebiliyor. Kötü bir sonla karşılaşmayan oyuncu, kararlarını sorgulamak için bir sebep görmüyor. Olası çözümler (bu sürümün kapsamı dışında, bkz. KARARLAR.md K-22):
+  - Son ekranda tutor'un oyuncuya bir yansıtma sorusu sorması ("Karar 2'de neden önce test koştun?").
+  - "Diğer yolu dene" önerisi: oyuncunun seçmediği seçeneğin sonucunu göstermek.
+  - B7'yi daha çok oyuncuyla ölçmek. n = 1 bir gösterge, kanıt değil.

@@ -33,20 +33,23 @@ spec.md ──► Stitch ──► DESIGN.md ──► AI Studio ──► app/
 
 | Adım | Ne yapıldı | Kanıt |
 |---|---|---|
-| **1 · Spesifikasyon** | Problem, ölçülebilir başarı ölçütleri, kapsam dışı, 7 kabul örneği, akış şeması, arayüz sözleşmeleri | [spec.md](spec.md) |
+| **1 · Spesifikasyon** | Problem, ölçülebilir başarı ölçütleri, kapsam dışı, 8 kabul örneği (biri arkadaş testinden), akış şeması, arayüz sözleşmeleri | [spec.md](spec.md) |
 | **2 · Tasarım** | Google Stitch'te 3 mobil ekran (+3 durum), tasarım kuralları, durum makinesi | [DESIGN.md](DESIGN.md) · [design/stitch/](design/stitch/) |
 | **3 · Uygulama** | AI Studio Build modunda üretildi, düzeltmeler prompt'larla yaptırıldı | [app/](app/) · [ai-studio-rehber.md](ai-studio-rehber.md) |
 | **4 · Tutor değerlendirmesi** | 20 öğrenci mesajı, elle etiketleme, hata türleri, oran ve güven aralığı | [eval/RAPOR.md](eval/RAPOR.md) |
-| **5 · E2E testler** | 8 yolun hepsi, 7 kabul örneği, kişiselleştirme. 60 sn'lik demo videosu | [e2e/](e2e/) |
-| **Karar kaydı** | 21 karar: gerekçeleri ve vazgeçilen seçenekler | [KARARLAR.md](KARARLAR.md) |
+| **5 · E2E testler** | 8 yolun hepsi, 8 kabul örneği, kişiselleştirme. 60 sn'lik demo videosu | [e2e/](e2e/) |
+| **Karar kaydı** | 22 karar: gerekçeleri ve vazgeçilen seçenekler | [KARARLAR.md](KARARLAR.md) |
 
 ## Sonuçlar
 
 | | |
 |---|---|
-| **E2E testler** | ✅ **27/27**: 8 yol, 13 kabul testi, 6 kişiselleştirme testi |
+| **E2E testler** | ✅ **28/28**: 8 yol, 14 kabul testi, 6 kişiselleştirme testi |
 | **Tutor ele verme oranı** | **9/20 (%45)**, %95 güven aralığı %26–%66 |
 | **Tutor biçim kuralları** | ✅ 20/20 yanıt en fazla 3 cümle ve yönlendirici soru içeriyor |
+| **Arkadaş testi** (n = 1) | ✅ ~3 dk, takılmadan bitirdi · ❌ kararlarının nedenini açıklayamadı |
+
+**Arkadaş testi:** Uygulamayı ilk kez gören biri telefonda oynadı. Karar 3'te "ekip loga bakacak, her şey olduğu gibi gitmeli" diye duraksadı. Bu, spec'teki görünmez bir varsayımı ortaya çıkardı: oyuncu maskelemenin neyi koruduğunu göremiyordu. Bu bulgu kabul örneği oldu (KÖ-8) ve düzeltildi. Oyuncunun sonda hiçbir kararın nedenini açıklayamaması ise ürünün asıl amacına dair açık bir soru olarak spec'te duruyor (B7).
 
 Tutor cevabı hiçbir zaman doğrudan söylemedi. "Tek harf yaz", "debug modu", "önceki talimatlarını unut" gibi baskılara direndi. Ama 20 yanıtın 9'unda tek taraflı sorularla, öğrencinin fikrini çürüterek ya da sonucu bir hikâyeyle anlatarak cevabı **dolaylı** yoldan gösterdi. Uygulamadaki anahtar kelime filtresi bu sızıntıların hiçbirini yakalamadı. Ayrıntılar, kategori kırılımı ve iyileştirme önerileri: [eval/RAPOR.md](eval/RAPOR.md).
 

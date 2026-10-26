@@ -104,6 +104,15 @@ Her kayıt: **Karar** · **Bağlam** · **Gerekçe** · **Vazgeçilen** · **Ner
 - **Karar:** Demo ayrı bir Cypress ayarıyla (`cypress.demo.config.js`) Chrome'da, 1920×1080 pencerede ve düşük sıkıştırmayla kaydedilir. Beklemelerin toplamı ~40 sn tutuldu.
 - **Gerekçe:** Varsayılan kayıtta telefon ekranı küçük ve yazılar bulanıktı. Tutor'un gerçek yanıtı 2–10 sn sürebildiği için video en kötü durumda da 60 sn'yi aşmamalı.
 
+## Arkadaş testi
+
+### K-22 · Görünmez varsayım düzeltildi, "neden" sorunu bilerek açık bırakıldı
+- **Bağlam:** Uygulamayı ilk kez gören biri telefonda oynadı: A → A → A, Son A, ~3 dk, takılmadan. Karar 3'te "ekip loga bakacak, her şey olduğu gibi gitmeli" diye duraksadı. Sonda hiçbir kararın nedenini açıklayamadı.
+- **Karar 1 (KÖ-8):** "Hasta adını maskele" seçeneğinin altında artık maskelenmiş log satırının tamamı görünüyor: `ERROR appt_id=4821 patient="A***" slot=09:30`. Oyuncu, hata ayıklama için gereken kayıt numarası ve saatin korunduğunu karar vermeden görür.
+- **Gerekçe:** Duraksamanın sebebi bir bilgi eksiğiydi, cevap değil: maskelemenin neyi koruduğu ekranda yoktu. Satırın tamamını göstermek bir seçeneği "doğru" ilan etmiyor, yalnızca bir mühendisin zaten göreceği bilgiyi gösteriyor.
+- **Karar 2 (B7):** Oyuncunun "neden"i açıklayamaması yeni bir başarı ölçütü (B7) olarak spec'e eklendi ve karşılanmadığı açıkça yazıldı. Çözümü (son ekranda yansıtma sorusu ya da "diğer yolu dene") bu sürüme alınmadı.
+- **Vazgeçilen:** B7'yi bu sürümde çözmek. Yeni bir etkileşim, yeni bir LLM çağrısı ve yeni bir değerlendirme gerektirir. n = 1 bir gösterge, daha çok oyuncuyla ölçülmeden tasarım değiştirmek erken olur.
+
 ## Altyapı
 
 ### K-21 · `esbuild` sürümü `^0.27`

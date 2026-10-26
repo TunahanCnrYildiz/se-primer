@@ -296,15 +296,15 @@ export const SceneScreen: React.FC<SceneScreenProps> = ({
                   : 'bg-[#FFFDF8] border border-[#D9D3C7] shadow-subtle hover:border-[#5B6275]/50 cursor-pointer'
               }`}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                 <div className="w-8 h-8 rounded-[6px] bg-[#F2EEE6] text-[#14213D] font-mono text-[14px] font-bold flex items-center justify-center shrink-0">
                   A
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col min-w-0">
                   <span className="font-sans text-[15px] font-medium text-[#14213D]">
                     A · {decision.options.A.title}
                   </span>
-                  <span className="font-mono text-[12px] text-[#5B6275] mt-0.5">
+                  <span className="font-mono text-[12px] text-[#5B6275] mt-0.5 break-words">
                     {decision.options.A.sub}
                   </span>
                 </div>
@@ -332,15 +332,15 @@ export const SceneScreen: React.FC<SceneScreenProps> = ({
                   : 'bg-[#FFFDF8] border border-[#D9D3C7] shadow-subtle hover:border-[#5B6275]/50 cursor-pointer'
               }`}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-1 min-w-0 pr-2">
                 <div className="w-8 h-8 rounded-[6px] bg-[#F2EEE6] text-[#14213D] font-mono text-[14px] font-bold flex items-center justify-center shrink-0">
                   B
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col min-w-0">
                   <span className="font-sans text-[15px] font-medium text-[#14213D]">
                     B · {decision.options.B.title}
                   </span>
-                  <span className="font-mono text-[12px] text-[#5B6275] mt-0.5">
+                  <span className="font-mono text-[12px] text-[#5B6275] mt-0.5 break-words">
                     {decision.options.B.sub}
                   </span>
                 </div>

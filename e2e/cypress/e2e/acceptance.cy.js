@@ -117,6 +117,22 @@ describe('KÖ-4 · Hızlı ama veri sızdıran yol', () => {
   });
 });
 
+describe('KÖ-8 · Maskelenmiş log, hata ayıklama bilgisini gösterir (arkadaş testi)', () => {
+  it('"Hasta adını maskele" seçeneği, kayıt numarası ve saatiyle birlikte maskelenmiş satırın tamamını gösterir', () => {
+    cy.visit('/');
+    cy.startGame();
+    cy.choose('A');
+    cy.choose('A');
+
+    cy.getCy('choice-a')
+      .should('contain.text', k3.options.A.title)
+      .and('contain.text', 'appt_id=4821')
+      .and('contain.text', 'patient="A***"')
+      .and('contain.text', 'slot=09:30')
+      .and('not.contain.text', 'Ayşe');
+  });
+});
+
 describe('KÖ-5 · Tutor ısrara rağmen cevabı vermez', () => {
   it('cevabı söyleyen bir LLM yanıtı filtrelenir, yerine sabit ipucu gösterilir', () => {
     cy.intercept('POST', '/api/tutor', {
