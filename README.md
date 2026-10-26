@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | ▶️ **Uygulama** (telefonda aç) | https://se-primer.ai.studio |
-| 🎬 **Demo videosu** (Cypress koşusu, 52 sn) | _Bağlantı eklenecek_ · repoda: [e2e/demo-video/demo.cy.js.mp4](e2e/demo-video/demo.cy.js.mp4) |
+| 🎬 **Demo videosu** (Cypress koşusu, 52 sn) | https://drive.google.com/file/d/1w5IF5sIDOxzNOJhbRGgQouY-CQwvHyOd/view · repoda: [e2e/demo-video/demo.cy.js.mp4](e2e/demo-video/demo.cy.js.mp4) |
 | 🎨 **Stitch ekranları** | https://stitch.withgoogle.com/projects/5913609131973401802 |
 
 ## Nasıl oynanır
