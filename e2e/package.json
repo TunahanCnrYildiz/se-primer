@@ -1,0 +1,13 @@
+{
+  "name": "se-primer-e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "cypress run --spec \"cypress/e2e/paths.cy.js,cypress/e2e/acceptance.cy.js,cypress/e2e/personalization.cy.js\"",
+    "demo": "cypress run --browser chrome --config-file cypress.demo.config.js",
+    "open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "16.1.1"
+  }
+}

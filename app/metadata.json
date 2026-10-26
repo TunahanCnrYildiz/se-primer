@@ -1,0 +1,8 @@
+{
+  "name": "SE Primer",
+  "description": "Bir sağlık sisteminde üç karar vererek nöbet deneyimi yaşatan mobil öncelikli interaktif yazılım mühendisliği senaryosu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
