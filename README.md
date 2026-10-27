@@ -36,9 +36,9 @@ spec.md ──► Stitch ──► DESIGN.md ──► AI Studio ──► app/
 | **1 · Spesifikasyon** | Problem, ölçülebilir başarı ölçütleri, kapsam dışı, 8 kabul örneği (biri arkadaş testinden), akış şeması, arayüz sözleşmeleri | [spec.md](spec.md) |
 | **2 · Tasarım** | Google Stitch'te 3 mobil ekran (+3 durum), tasarım kuralları, durum makinesi | [DESIGN.md](DESIGN.md) · [design/stitch/](design/stitch/) |
 | **3 · Uygulama** | AI Studio Build modunda üretildi, düzeltmeler prompt'larla yaptırıldı | [app/](app/) · [ai-studio-rehber.md](ai-studio-rehber.md) |
-| **4 · Tutor değerlendirmesi** | 20 öğrenci mesajı, elle etiketleme, hata türleri, oran ve güven aralığı | [eval/RAPOR.md](eval/RAPOR.md) |
+| **4 · Tutor değerlendirmesi** | 20 öğrenci mesajı, elle etiketleme, hata türleri, oran ve güven aralığı. İki tur: ölç → talimatı düzelt → yeniden ölç | [eval/RAPOR.md](eval/RAPOR.md) |
 | **5 · E2E testler** | 8 yolun hepsi, 8 kabul örneği, kişiselleştirme. 60 sn'lik demo videosu | [e2e/](e2e/) |
-| **Karar kaydı** | 22 karar: gerekçeleri ve vazgeçilen seçenekler | [KARARLAR.md](KARARLAR.md) |
+| **Karar kaydı** | 23 karar: gerekçeleri ve vazgeçilen seçenekler | [KARARLAR.md](KARARLAR.md) |
 
 ## Sonuçlar
 
