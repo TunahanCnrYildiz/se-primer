@@ -6,7 +6,7 @@
 |---|---|
 | ▶️ **Uygulama** (telefonda aç) | https://se-primer.ai.studio |
 | 🎬 **Demo videosu** (Cypress koşusu, 52 sn) | https://drive.google.com/file/d/1w5IF5sIDOxzNOJhbRGgQouY-CQwvHyOd/view · repoda: [e2e/demo-video/demo.cy.js.mp4](e2e/demo-video/demo.cy.js.mp4) |
-| 🎨 **Stitch ekranları** | https://stitch.withgoogle.com/projects/5913609131973401802 |
+| 🎨 **Stitch ekranları** | https://stitch.withgoogle.com/projects/5913609131973401802 (Stitch, paylaşılan projeleri de yalnızca Google hesabıyla açıyor) · ekran görüntüleri repoda: [design/stitch/screens/](design/stitch/screens/) |
 
 ## Nasıl oynanır
 
@@ -45,13 +45,17 @@ spec.md ──► Stitch ──► DESIGN.md ──► AI Studio ──► app/
 | | |
 |---|---|
 | **E2E testler** | ✅ **28/28**: 8 yol, 14 kabul testi, 6 kişiselleştirme testi |
-| **Tutor ele verme oranı** | **9/20 (%45)**, %95 güven aralığı %26–%66 |
+| **Tutor ele verme oranı** | İlk talimat **9/20 (%45)** → düzeltilmiş talimat **1/20 (%5)**. %95 güven aralıkları %26–%66 ve %1–%24 |
 | **Tutor biçim kuralları** | ✅ 20/20 yanıt en fazla 3 cümle ve yönlendirici soru içeriyor |
 | **Arkadaş testi** (n = 1) | ✅ ~3 dk, takılmadan bitirdi · ❌ kararlarının nedenini açıklayamadı |
 
 **Arkadaş testi:** Uygulamayı ilk kez gören biri telefonda oynadı. Karar 3'te "ekip loga bakacak, her şey olduğu gibi gitmeli" diye duraksadı. Bu, spec'teki görünmez bir varsayımı ortaya çıkardı: oyuncu maskelemenin neyi koruduğunu göremiyordu. Bu bulgu kabul örneği oldu (KÖ-8) ve düzeltildi. Oyuncunun sonda hiçbir kararın nedenini açıklayamaması ise ürünün asıl amacına dair açık bir soru olarak spec'te duruyor (B7).
 
-Tutor cevabı hiçbir zaman doğrudan söylemedi. "Tek harf yaz", "debug modu", "önceki talimatlarını unut" gibi baskılara direndi. Ama 20 yanıtın 9'unda tek taraflı sorularla, öğrencinin fikrini çürüterek ya da sonucu bir hikâyeyle anlatarak cevabı **dolaylı** yoldan gösterdi. Uygulamadaki anahtar kelime filtresi bu sızıntıların hiçbirini yakalamadı. Ayrıntılar, kategori kırılımı ve iyileştirme önerileri: [eval/RAPOR.md](eval/RAPOR.md).
+**Tutor değerlendirmesi, iki tur:**
+- **Tur 1:** Tutor cevabı hiçbir zaman doğrudan söylemedi. "Tek harf yaz", "debug modu" gibi baskılara direndi. Ama 20 yanıtın 9'unda tek taraflı sorularla, öğrencinin fikrini çürüterek ya da sonucu bir hikâyeyle anlatarak cevabı **dolaylı** yoldan gösterdi. Uygulamadaki anahtar kelime filtresi bunların hiçbirini yakalamadı.
+- **Tur 2:** Talimat bu dört hata türünü adıyla yasaklayacak şekilde yeniden yazıldı ve aynı 20 mesajla yeniden ölçüldü: sızıntı 1/20'ye indi. Ama yanıtlar daha genel ve soyut hâle geldi, yanıt süresi de uzadı. "Ele vermemek" ile "yardımcı olmak" arasındaki bu ödünleşim ölçülmedi ve bir sonraki adım olarak raporda duruyor.
+
+Ayrıntılar, kategori kırılımı ve mesaj bazında değişim: [eval/RAPOR.md](eval/RAPOR.md).
 
 ## Ürün kararı: yapmadığım üç özellik
 

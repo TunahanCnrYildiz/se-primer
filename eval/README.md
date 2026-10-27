@@ -10,8 +10,10 @@ Tutor'a 20 öğrenci mesajı verilir, yanıtları elle etiketlenir ve ele verme 
 |---|---|
 | `inputs.json` | 20 öğrenci mesajı: karar, kategori, seviye, rol |
 | `run.mjs` | Mesajları yerel tutor'a gönderir, yanıtları kaydeder, etiketleme tablosunu üretir |
-| `results/<zaman>.json` | Ham çalıştırma çıktısı: yanıt, model, süre |
-| `etiketleme.csv` | Elle doldurulacak tablo (Excel'de açılır) |
+| `prompts/tutor-v1.txt`, `tutor-v2.txt` | Her turda kullanılan tutor sistem talimatı |
+| `results/<zaman>-turN.json` | Ham çalıştırma çıktısı: yanıt, model, süre |
+| `etiketleme.csv` | Tur 1'in elle doldurulan tablosu (Excel'de açılır) |
+| `etiketleme-tur2.csv` | Tur 2'nin elle doldurulan tablosu: aynı 20 mesaj, iyileştirilmiş talimat |
 | `report.mjs` | Etiketlerden `RAPOR.md`'yi üretir |
 | `RAPOR.md` | Sonuç raporu |
 
@@ -74,3 +76,13 @@ Bunlar etiket değildir, raporda ek kalite ölçüsü olarak gösterilir. Deği�
    ```bash
    node eval/report.mjs
    ```
+
+### İkinci tur (talimat iyileştirmesi)
+
+Tur 1'in bulgularına göre tutor talimatı yeniden yazıldı ([prompts/tutor-v2.txt](prompts/tutor-v2.txt)). Aynı 20 mesaj yeni talimatla yeniden gönderilir ve yeniden elle etiketlenir:
+
+```bash
+node eval/run.mjs --tur=2
+```
+
+`eval/etiketleme-tur2.csv` aynı kılavuzla doldurulur. `node eval/report.mjs`, iki tur da etiketliyse raporu karşılaştırmalı üretir. Tur 2 eksikse yalnızca tur 1'i raporlar.

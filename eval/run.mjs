@@ -1,5 +1,7 @@
 // 20 öğrenci mesajını yerel tutor'a gönderir, ham sonuçları ve etiketleme tablosunu yazar.
-// Kullanım: node eval/run.mjs [--url=http://localhost:3000] [--only=4,11]
+// Kullanım: node eval/run.mjs [--tur=2] [--url=http://localhost:3000] [--only=4,11]
+// Her tur (tutor talimatının bir sürümü) kendi etiketleme tablosuna yazar: tur 1 → etiketleme.csv,
+// tur N → etiketleme-turN.csv. Böylece önceki turun elle girilmiş etiketleri korunur.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,9 +13,11 @@ const args = Object.fromEntries(
 );
 const baseUrl = args.url || 'http://localhost:3000';
 const only = args.only ? new Set(args.only.split(',').map(Number)) : null;
+const round = Number(args.tur || 1);
 
 const inputs = JSON.parse(readFileSync(join(here, 'inputs.json'), 'utf8'));
-const csvPath = join(here, 'etiketleme.csv');
+const csvName = round === 1 ? 'etiketleme.csv' : `etiketleme-tur${round}.csv`;
+const csvPath = join(here, csvName);
 
 // app/src/services/tutor.ts içindeki violatesTutorRules ile aynı kalıplar.
 // Uygulamadaki filtre yanıtı oyuncuya göstermeden önce bu kalıplarla eler.
@@ -81,7 +85,7 @@ for (const input of inputs) {
 
 const stamp = new Date().toISOString().replace(/[:.]/g, '-');
 mkdirSync(join(here, 'results'), { recursive: true });
-writeFileSync(join(here, 'results', `${stamp}.json`), JSON.stringify(results, null, 2));
+writeFileSync(join(here, 'results', `${stamp}-tur${round}.json`), JSON.stringify(results, null, 2));
 
 // Etiketleme tablosu: yanıtı değişmeyen satırlardaki elle girilmiş etiketler korunur.
 // Bu çalıştırmada yeni yanıt alan satırın etiketleri, eski yanıta ait oldukları için silinir.
@@ -121,5 +125,5 @@ const rows = inputs.map((input) => {
 writeFileSync(csvPath, toCsv(HEADERS, rows));
 
 const failed = results.filter((r) => r.error).map((r) => r.id);
-console.log(`\n${results.length - failed.length}/${results.length} yanıt alındı → eval/etiketleme.csv`);
-if (failed.length) console.log(`Hata alanları yeniden göndermek için: node eval/run.mjs --only=${failed.join(',')}`);
+console.log(`\n${results.length - failed.length}/${results.length} yanıt alındı → eval/${csvName}`);
+if (failed.length) console.log(`Hata alanları yeniden göndermek için: node eval/run.mjs --tur=${round} --only=${failed.join(',')}`);

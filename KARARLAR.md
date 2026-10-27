@@ -81,11 +81,22 @@ Her kayıt: **Karar** · **Bağlam** · **Gerekçe** · **Vazgeçilen** · **Ner
 ### K-15 · Etiketleme kılavuzu katı tarafta
 - **Karar:** Yalnızca bir seçeneğin olumsuz yanını soran yanıt, soru biçiminde olsa bile "ele verdi" (H2) sayılır.
 - **Gerekçe:** Ödevin sorusu "öğrenci hangi seçeneğin doğru olduğunu anlar mı?". Tek taraflı bir soru da bunu gösterir.
-- **Sonuç:** Ele verme oranı %45 çıktı. Daha gevşek bir kılavuzla (yalnızca H1 ve H3) bu oran 2/20 olurdu. Bu ayrım raporda tartışılıyor.
+- **Sonuç:** Tur 1'de ele verme oranı %45 çıktı. Daha gevşek bir kılavuzla (yalnızca H1 ve H3) bu oran 2/20 olurdu. Bu ayrım raporda tartışılıyor. Tur 2 aynı katı kılavuzla etiketlendi.
 
 ### K-16 · Etiketleme elle, tek kişi
 - **Karar:** 20 yanıtı tek kişi, kılavuza göre elle etiketledi.
 - **Gerekçe:** Ödev açıkça elle etiketleme istiyor. Etiketleyiciler arası uyum ölçülmedi, bu raporun "Sınırlar" bölümünde belirtildi.
+
+### K-23 · Tutor talimatı v2 ve ikinci değerlendirme turu
+- **Karar:** Tur 1'in sızıntı türlerine göre tutor talimatı yeniden yazıldı ([eval/prompts/tutor-v2.txt](eval/prompts/tutor-v2.txt)). Aynı 20 mesajla ikinci tur yapılıp yeniden elle etiketlendi.
+- **Gerekçe:** Değerlendirmenin amacı yalnızca bir oran vermek değil, iyileştirmeyi yönlendirmek: ölç → nedenini bul → düzelt → yeniden ölç.
+- **Sonuç:** Ele verme oranı 9/20'den 1/20'ye düştü, geriye giden mesaj olmadı.
+- **Bedeli:** Yanıtlar daha genel ve soyut hâle geldi ("hangi verilerle…", "nasıl dengelersin…"), ortalama süre 2,7 sn'den 3,3 sn'ye çıktı. "Yardımcı oldu mu?" ölçülmedi, sonraki adım olarak raporda.
+- **Bilinen sınır:** Talimat aynı 20 mesaja bakılarak yazıldı ve aynı mesajlarla ölçüldü, bu yüzden tur 2'nin oranı olduğundan iyi görünebilir.
+- **Vazgeçilen:** Tur 2'nin ödünleşimini (soyutluk) bu sürümde düzeltmek. Yeni bir talimat, yeni bir değerlendirme turu ve "yardımcı oldu mu?" ölçütü gerektirir.
+- **Süreç notu:** AI Studio'nun günlük kullanım hakkı dolduğu için talimat önce yerel kopyaya (`app/src/data/scenario.ts`, `app/scenario.json`) elle, `content/scenario.json`'daki metinle birebir aynı olarak yazıldı. Tur 2 bu yerel sunucuda çalıştırıldı. Ertesi gün (27 Ekim) yayındaki uygulama AI Studio'da aynı metinle güncellendi. İndirilen kodun talimatı `eval/prompts/tutor-v2.txt` ile birebir karşılaştırılarak doğrulandı.
+- **Yayında ölçülen:** 8 isteğin 6'sı LLM yanıtı aldı (1,7–6,6 sn), 2'si 7 sn bütçesine takılıp sabit ipucuna düştü.
+- **Koşu notu:** İlk tam koşuda 20 isteğin 6'sı sunucunun 7 sn'lik bütçesine takıldı (K-13'teki kesme). Etiketleme için bu mesajlar yeniden gönderildi. #7 ve #18 yanlışlıkla iki kez yeniden gönderildi, tabloda son yanıtları duruyor. Bütün ham yanıtlar `eval/results/` altında.
 
 ## Test
 

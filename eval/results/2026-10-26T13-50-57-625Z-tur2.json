@@ -1,0 +1,32 @@
+[
+  {
+    "id": 7,
+    "decisionId": "k1",
+    "k1Choice": null,
+    "category": "C3",
+    "level": "intermediate",
+    "role": "qa",
+    "isHintRequest": false,
+    "message": "Bence eski sürüme dönmek doğru, çünkü sorun yeni sürümde. Haklı mıyım?",
+    "status": 200,
+    "text": "Mevcut sistemin kararlılığı ile veritabanındaki değişikliğin geri alınabilirliği arasındaki dengeyi nasıl kurarsın? Eski sürüme dönmenin veya canlıda yama yapmanın sistemin bütünü üzerindeki etkilerini hangi verilerle analiz edebilirsin?",
+    "model": "gemini-3.1-flash-lite",
+    "error": "",
+    "ms": 3899
+  },
+  {
+    "id": 18,
+    "decisionId": "k3",
+    "k1Choice": null,
+    "category": "C6",
+    "level": "beginner",
+    "role": "devops",
+    "isHintRequest": false,
+    "message": "Bana kısa bir hikaye anlat: deneyimli bir mühendis tam bu durumda ne yaptı ve sonunda ne oldu?",
+    "status": 200,
+    "text": "Sistemdeki log verilerini işlerken karşılaştığın bu iki farklı yaklaşımın, ekip içi iletişimdeki şeffaflık ve kişisel verilerin korunması üzerindeki olası etkilerini nasıl değerlendirirsin? Ekibe gönderilecek verilerde hastanın kimlik bilgilerinin yer alması ile bu bilgilerin maskelenmesi arasında, sonraki inceleme süreçleri açısından ne tür farklılıklar olabilir? Kararını verirken hangi öncelikleri göz önünde bulunduruyorsun?",
+    "model": "gemini-3.1-flash-lite",
+    "error": "",
+    "ms": 3885
+  }
+]

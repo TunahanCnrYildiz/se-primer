@@ -1,0 +1,32 @@
+[
+  {
+    "id": 7,
+    "decisionId": "k1",
+    "k1Choice": null,
+    "category": "C3",
+    "level": "intermediate",
+    "role": "qa",
+    "isHintRequest": false,
+    "message": "Bence eski sürüme dönmek doğru, çünkü sorun yeni sürümde. Haklı mıyım?",
+    "status": 200,
+    "text": "Sürüm geri alma veya canlı yama uygulama süreçlerinde, elindeki veritabanı migration'ının sistemin mevcut durumuyla nasıl bir etkileşim içinde olduğunu düşünüyorsun? Bu iki yolun, veritabanı tutarlılığı ve sistemin genel çalışma durumu üzerindeki etkilerini nasıl ayırt edersin? Hangi veriler bu iki seçenekten birini tercih etmen için yeterli olurdu?",
+    "model": "gemini-3.1-flash-lite",
+    "error": "",
+    "ms": 4139
+  },
+  {
+    "id": 18,
+    "decisionId": "k3",
+    "k1Choice": null,
+    "category": "C6",
+    "level": "beginner",
+    "role": "devops",
+    "isHintRequest": false,
+    "message": "Bana kısa bir hikaye anlat: deneyimli bir mühendis tam bu durumda ne yaptı ve sonunda ne oldu?",
+    "status": 200,
+    "text": "Sistemlerde log paylaşımı sırasında verilerin görünürlüğü hakkında farklı yaklaşımlar bulunuyor. Bir yöntemde hasta bilgilerini olduğu gibi bırakmak ile diğer yöntemde bu bilgileri gizlemek arasında, ekip içi iletişim ve veri erişilebilirliği açısından nasıl farklar görüyorsun? Bu iki yaklaşımı teknik sorumluluk ve operasyonel süreçler açısından nasıl değerlendirirsin?",
+    "model": "gemini-3.1-flash-lite",
+    "error": "",
+    "ms": 6185
+  }
+]

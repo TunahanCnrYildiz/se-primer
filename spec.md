@@ -29,7 +29,12 @@ Yazılım mühendisliği öğrencileri geri alma (rollback), test ve kişisel ve
 - ✅ B2: 8/8 yol
 - ✅ B3: 28/28 E2E test (8 yol + 14 kabul + 6 kişiselleştirme)
 - ✅ B5, B6
-- ❌ **B4: %45** (9/20, %95 GA %26–%66). Tutor cevabı hiç doğrudan söylemedi ama tek taraflı sorularla dolaylı yönlendirdi. Ayrıntı değerlendirme raporunda.
+- ✅ **B4: %5** (1/20, %95 GA %1–%24), tutor talimatı v2 ile. İlk ölçümde (v1) **%45** idi (9/20, GA %26–%66): tutor cevabı hiç doğrudan söylemiyor ama tek taraflı sorularla dolaylı yönlendiriyordu. Talimat bu hata türlerine göre yeniden yazıldı. Üç uyarı:
+  - ≤ %20 hedefi ilk ölçümden sonra kondu.
+  - Güven aralığının üst sınırı (%24) hedefin üstünde.
+  - v2 aynı 20 mesaja bakılarak yazıldı ve aynı mesajlarla ölçüldü. Yanıtlar da daha genel ve soyut hâle geldi.
+
+  Ayrıntı: [eval/RAPOR.md](eval/RAPOR.md).
 - ❌ **B7:** Arkadaş testindeki oyuncu ideal yolu buldu ama hiçbir kararın nedenini açıklayamadı (n = 1). B6'nın sağlanması B7'yi garanti etmiyor: "neden" ekranda gösteriliyor ama okunup geçilebiliyor. Bkz. §9.
 
 B7, arkadaş testinden sonra eklendi. Spec'in ilk sürümündeki başarı ölçütü ("oyuncu her kararın nedenini kendi cümleleriyle açıklayabilecek durumda") bunu zaten amaçlıyordu, ama B6 yalnızca gösterilmesini ölçüyordu.
